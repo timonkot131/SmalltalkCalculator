@@ -5,10 +5,23 @@ Class {
 	#classTraits : 'TGtAnnouncer classTrait',
 	#instVars : [
 		'announcer',
-		'model'
+		'model',
+		'currentNumber'
 	],
 	#category : #SmalltalkCalculator
 }
+
+{ #category : #accessing }
+CalcViewModel class >> grid: buttons [
+	| grid |
+	grid := BlElement new
+			layout: (BlGridLayout new columnCount: 3);
+			width: 170;
+			constraintsDo: [ :c | c vertical fitContent ];
+			addChildren: buttons;
+			yourself.
+	^ grid
+]
 
 { #category : #factory }
 CalcViewModel class >> withModel: aCalculator [
@@ -37,6 +50,14 @@ CalcViewModel >> model: aCalculator [
 model := aCalculator
 ]
 
+{ #category : #'as yet unclassified' }
+CalcViewModel >> onInstalledIn: anObject [
+]
+
+{ #category : #'as yet unclassified' }
+CalcViewModel >> onUninstalledIn: anObject [
+]
+
 { #category : #operations }
 CalcViewModel >> sendDiv [ 
 	model state: #div.
@@ -50,6 +71,12 @@ CalcViewModel >> sendMinus [
 { #category : #operations }
 CalcViewModel >> sendMul [
 	model state: #mul.
+]
+
+{ #category : #'as yet unclassified' }
+CalcViewModel >> sendNum: aNumber [ 
+	currentNumber := currentNumber + aNumber asString.
+	self announce: (NumberChanged with: currentNumber)
 ]
 
 { #category : #operations }
