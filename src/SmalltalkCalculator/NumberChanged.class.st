@@ -9,7 +9,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 NumberChanged class >> with: aString [
-	self new numAsString: aString
+	^self new numAsString: aString
 ]
 
 { #category : #accessing }

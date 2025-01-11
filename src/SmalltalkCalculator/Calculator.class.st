@@ -10,7 +10,8 @@ Class {
 
 { #category : #operations }
 Calculator >> calc: aNumber [
-	numState := self perform: msgState withArguments: aNumber.
+	numState := self perform: msgState withArguments: {aNumber}.
+	^numState.
 ]
 
 { #category : #operations }
@@ -21,8 +22,7 @@ Calculator >> div: aNumber [
 { #category : #initalization }
 Calculator >> initialize [
 super initialize.
-self msgState: #print.
-self numState: 0.
+self msg: #print: num: 0.
 ]
 
 { #category : #operations }
@@ -30,29 +30,15 @@ Calculator >> minus: aNumber [
 ^numState - aNumber.
 ]
 
-{ #category : #accessing }
-Calculator >> msgState [
-	^msgState
-]
-
-{ #category : #accessing }
-Calculator >> msgState: aSymbol [
- msgState := aSymbol.
+{ #category : #'as yet unclassified' }
+Calculator >> msg: aSymbol num: aNumber [ 
+	numState := aNumber.
+	msgState := aSymbol.
 ]
 
 { #category : #operations }
 Calculator >> mul: aNumber [
 ^numState * aNumber.
-]
-
-{ #category : #accessing }
-Calculator >> numState [
-	^ numState
-]
-
-{ #category : #accessing }
-Calculator >> numState: anInteger [
-	numState := anInteger
 ]
 
 { #category : #operations }
@@ -61,6 +47,6 @@ Calculator >> plus: aNumber [
 ]
 
 { #category : #operations }
-Calculator >> print: anInteger [
-self
+Calculator >> print: aNumber [
+^aNumber
 ]
