@@ -17,7 +17,7 @@ BaselineOfSmalltalkCalculatorRelease >> baseline: spec [
 
 			spec 
 				package: 'SmalltalkCalculator' 
-				with: [ spec requires: #('Brick' 'GToolkit-Utility-Announcer') ]
+				with: [ spec requires: #('Brick') ]
 			 ]
 ]
 
