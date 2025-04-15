@@ -7,12 +7,15 @@ Class {
 { #category : #'as yet unclassified' }
 BaselineOfSmalltalkCalculatorRelease >> baseline: spec [
 	<baseline>
-		^ spec for: #common do: [
-			self loadBloc: spec.
-			self loadAnnouncer: spec.
-			
-			spec package: 'SmalltalkCalculator'.
-		]
+	^ spec
+		for: #common
+		do: [ self loadAnnouncer: spec.
+
+			spec
+				baseline: 'Brick'
+				with: [ spec repository: 'github://feenkcom/Brick/src' ].
+
+			spec package: 'SmalltalkCalculator' ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -64,4 +67,57 @@ BaselineOfSmalltalkCalculatorRelease >> loadBloc: spec [
 			with: [ spec requires: #(#Bloc #'Bloc-Layout' #'Bloc-Text-Elements' #'Bloc-Text-Rope') ];
 		package: #'Bloc-Scripter'
 			with: [ spec requires: #(#Bloc #'Bloc-Layout' #'Bloc-Exporter' #'BlocHost-Mock') ]
+]
+
+{ #category : #'as yet unclassified' }
+BaselineOfSmalltalkCalculatorRelease >> loadBrick: spec [
+	<baseline>
+	spec for: #'common' do: [
+		spec 
+			baseline: 'Bloc' with: [
+				spec repository: 'github://feenkcom/Bloc:main/src' ];
+			baseline: 'Futures' with: [
+				spec repository: 'github://feenkcom/pharo-futures:main/src' ];
+			baseline: 'BlocExamples' with: [
+				spec repository: 'github://feenkcom/Bloc:main/src' ];
+			baseline: 'BlocPac' with: [
+				spec repository: 'github://feenkcom/bloc-pac:main/src' ];
+			baseline: 'BlocPacExamples' with: [
+				spec repository: 'github://feenkcom/bloc-pac:main/src' ];
+			baseline: 'GToolkitResourcesUtility' with: [
+				spec repository: 'github://feenkcom/gtoolkit-utility:main/src' ].
+		spec 
+			package: #'Brick-Core' with: [
+				spec requires: #('Bloc' 'BlocPac' ). ];
+			package: #'Brick-Editor' with: [
+				spec requires: #(#'Brick-Core' ). ];
+			package: #'Brick-Editor-Extensions' with: [
+				spec requires: #(#'Brick-Editor' ). ];
+			package: #'Brick' with: [
+				spec requires: #(#'Brick-Core' #'Brick-Editor' 'Futures'). ];
+			package: #'Brick-List' with: [
+				spec requires: #(#'Brick'). ];
+			package: #'Brick-List-Ungrouped' with: [
+				spec requires: #(#'Brick' 'Brick-List'). ];
+			package: #'Brick-List-Grouped' with: [
+				spec requires: #(#'Brick' 'Brick-List'). ];
+			package: #'Brick-Theme' with: [
+				spec requires: #(#Brick ). ];
+			package: #'Brick-Glamorous' with: [
+				spec requires: #(#Brick 'GToolkitResourcesUtility' ). ];
+			package: #'Brick-Material' with: [
+				spec requires: #(#Brick ). ];
+			package: #'Brick-Hydra' with: [
+				spec requires: #(#Brick ). ];
+			package: #'Brick-DevTool' with: [
+				spec requires: #(#Brick 'Bloc' 'BlocPac' ). ];
+			package: #'Brick-Examples' with: [
+				spec requires: #('BlocExamples' #Brick #'Brick-Glamorous' #'Brick-Material' #'Brick-Hydra' #'Brick-DevTool' ). ];
+			package: #'Brick-Theme-Examples' with: [
+				spec requires: #(#'Brick-Theme' ). ];
+			package: #'Brick-Theme-Migration' with: [
+				spec requires: #(#'Brick-Theme' ). ];
+			package: #'Brick-Editor-Examples' with: [
+				spec requires: #(#Brick #'Brick-Editor' ). ]. ].
+
 ]
