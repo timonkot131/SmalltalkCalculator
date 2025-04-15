@@ -24,6 +24,6 @@ BaselineOfSmalltalkCalculatorRelease >> baseline: spec [
 { #category : #'as yet unclassified' }
 BaselineOfSmalltalkCalculatorRelease >> loadAnnouncer: spec [
 	spec
-		baseline: 'GToolkitAnnouncerUtility'
+		baseline: 'GToolkitUtility'
 		with: [ spec repository: 'github://feenkcom/gtoolkit-utility:main/src' ]. 
 ]
