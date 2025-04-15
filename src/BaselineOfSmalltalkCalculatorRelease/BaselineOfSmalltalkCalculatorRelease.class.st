@@ -15,7 +15,10 @@ BaselineOfSmalltalkCalculatorRelease >> baseline: spec [
 				baseline: 'Brick'
 				with: [ spec repository: 'github://feenkcom/Brick:main/src' ].
 
-			spec package: 'SmalltalkCalculator' ]
+			spec 
+				package: 'SmalltalkCalculator' 
+				with: [ spec requires: #('Brick' 'GToolkit-Utility-Announcer') ]
+			 ]
 ]
 
 { #category : #'as yet unclassified' }
