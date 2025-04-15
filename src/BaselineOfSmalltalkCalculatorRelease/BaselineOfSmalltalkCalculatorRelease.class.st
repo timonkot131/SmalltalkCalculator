@@ -28,5 +28,5 @@ BaselineOfSmalltalkCalculatorRelease >> loadAnnouncer: spec [
 		with: [ spec repository: 'github://feenkcom/gtoolkit-utility:main/src' ].
 	spec
 		package: 'GToolkit-Utility-Announcer'
-		with: [ spec requires: #('GToolkitBasicUtility') ]
+		with: [ spec requires: #('GToolkitAnnouncerUtility') ]
 ]
