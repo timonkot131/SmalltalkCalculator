@@ -17,16 +17,13 @@ BaselineOfSmalltalkCalculatorRelease >> baseline: spec [
 
 			spec 
 				package: 'SmalltalkCalculator' 
-				with: [ spec requires: #('Brick' 'GToolkit-Utility-Announcer') ]
+				with: [ spec requires: #('Brick' 'GToolkitAnnouncerUtility') ]
 			 ]
 ]
 
 { #category : #'as yet unclassified' }
 BaselineOfSmalltalkCalculatorRelease >> loadAnnouncer: spec [
 	spec
-		baseline: 'GToolkitBasicUtility'
+		baseline: 'GToolkitAnnouncerUtility'
 		with: [ spec repository: 'github://feenkcom/gtoolkit-utility:main/src' ]. 		  			
-	spec  
-		package: 'GToolkit-Utility-Announcer'
-		with: [ spec requires: #('GToolkitBasicUtility') ]
 ]
