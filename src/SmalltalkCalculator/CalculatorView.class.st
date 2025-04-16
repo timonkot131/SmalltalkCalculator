@@ -159,6 +159,16 @@ CalculatorView >> opGrid [
 		addChildren: (opElems, eqElem).
 ]
 
+{ #category : #'as yet unclassified' }
+CalculatorView >> openInSpace [
+| aSpace |
+	aSpace := BlSpace new
+		addChild: self;
+		extent: 800@600;
+		title: 'Moodle app'.
+aSpace show
+]
+
 { #category : #accessing }
 CalculatorView >> screen [
 	| text |
