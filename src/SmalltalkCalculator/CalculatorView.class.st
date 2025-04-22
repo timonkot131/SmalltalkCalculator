@@ -83,6 +83,7 @@ CalculatorView >> grid: aBlock [
 { #category : #initialization }
 CalculatorView >> initialize [
 	| screen textElem  midLayout |
+	"test"
 	super initialize.
 	self mainLayout viewModel: (CalcViewModel withModel: Calculator new).
 	screen := self screen.
